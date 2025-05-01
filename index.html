@@ -67,15 +67,58 @@
     }
     
     .model-container {
-      width: 500px;
-      height: 500px;
       background-color: transparent;
-      border-radius: 8px;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
       overflow: hidden;
+    }
+    
+    /* Special styling for the first box */
+    .box:first-child {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .box:first-child .title,
+    .box:first-child .subtitle-container {
+      position: relative;
+      z-index: 10;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    
+    .box:first-child .model-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    
+    .box:first-child::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+      pointer-events: none;
+      z-index: 5;
+    }
+    
+    .box:first-child .model-container model-viewer {
+      --scale: 1.5;
+      transform: scale(var(--scale));
+    }
+    
+    /* For second and third boxes, keep original styling */
+    .box:not(:first-child) .model-container {
+      width: 500px;
+      height: 350px;
+      border-radius: 8px;
     }
     
     model-viewer {
@@ -123,11 +166,6 @@
     <div class="box-container">
       <!-- Box 1 -->
       <div class="box">
-        <div class="title">Robotics and Digital Systems</div>
-        <div class="subtitle-container">
-          <div class="subtitle">•STRATA Robotic Assembly Projects</div>
-          <div class="subtitle">•Sanad MRO Robotics Projects</div>
-        </div>
         <div class="model-container">
           <model-viewer
             src="model.glb"
@@ -142,6 +180,11 @@
             background-color="transparent"
             interaction-prompt="none">
           </model-viewer>
+        </div>
+        <div class="title">Robotics and Digital Systems</div>
+        <div class="subtitle-container">
+          <div class="subtitle">•STRATA Robotic Assembly Projects</div>
+          <div class="subtitle">•Sanad MRO Robotics Projects</div>
         </div>
       </div>
       

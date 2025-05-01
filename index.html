@@ -171,14 +171,18 @@
             src="model.glb"
             camera-controls
             auto-rotate
-            rotation-per-second="10deg"
+            rotation-per-second="5deg"
             auto-play
             animation-name="idle"
             animation-crossfade-duration="0.5"
             shadow-intensity="1"
             environment-image="neutral"
             background-color="transparent"
-            interaction-prompt="none">
+            interaction-prompt="none"
+            camera-orbit="0deg 90deg 105%"
+            min-camera-orbit="auto auto 50%"
+            max-camera-orbit="auto auto 400%"
+            field-of-view="30deg">
           </model-viewer>
         </div>
         <div class="title">Robotics and Digital Systems</div>
